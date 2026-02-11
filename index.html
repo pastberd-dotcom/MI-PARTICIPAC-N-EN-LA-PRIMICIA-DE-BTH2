@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI PARTICIPACIÓN EN LA PRIMICIA DE LA SEÑORA BTH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4d 50%, #0a1628 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: shimmer 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            padding: 40px 30px;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            border: 2px solid #DAA520;
+            border-bottom: none;
+            box-shadow: 0 -5px 30px rgba(218, 165, 32, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        h1 {
+            color: #DAA520;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 10px rgba(218, 165, 32, 0.5);
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            color: #E6E6E6;
+            font-size: 14px;
+            margin-top: 15px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 40px 35px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid #DAA520;
+            border-top: none;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #1e3a5f;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .required {
+            color: #DAA520;
+            font-weight: 700;
+        }
+
+        .optional {
+            color: #718096;
+            font-size: 12px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            color: #1a202c;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #DAA520;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.1);
+        }
+
+        input:hover, select:hover {
+            border-color: #2c5282;
+        }
+
+        .phone-group {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(218, 165, 32, 0.4);
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(218, 165, 32, 0.6);
+            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .admin-panel {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e6e9ef 100%);
+            border-radius: 15px;
+            border: 2px solid #DAA520;
+        }
+
+        .admin-title {
+            color: #1e3a5f;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .export-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #2c5282 0%, #1e3a5f 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(44, 82, 130, 0.4);
+        }
+
+        .records-count {
+            text-align: center;
+            color: #2c5282;
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            margin: 10% auto;
+            padding: 40px;
+            border: 3px solid #DAA520;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: #1e3a5f;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .modal-message {
+            color: #4a5568;
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(218, 165, 32, 0.4);
+        }
+
+        .error-message {
+            color: #e53e3e;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .phone-group {
+                grid-template-columns: 100px 1fr;
+            }
+
+            .modal-content {
+                margin: 20% auto;
+                padding: 30px 20px;
+            }
+        }
+
+        .share-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+            border-radius: 12px;
+            border: 2px solid #2c5282;
+        }
+
+        .share-title {
+            color: #1e3a5f;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .share-link {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .share-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #2c5282;
+            border-radius: 8px;
+            font-size: 13px;
+            background: white;
+        }
+
+        .copy-btn {
+            padding: 10px 20px;
+            background: #2c5282;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #1e3a5f;
+            transform: scale(1.05);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #48bb78;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MI PARTICIPACIÓN EN LA PRIMICIA DE LA SEÑORA BTH</h1>
+            <div class="subtitle">Formulario oficial de registro de participaciones</div>
+        </div>
+
+        <div class="form-container">
+            <form id="participacionForm">
+                <div class="form-group">
+                    <label>Nombre completo <span class="required">*</span></label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingrese su nombre completo">
+                    <div class="error-message" id="error-nombre">Este campo es obligatorio</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Número de cédula <span class="required">*</span></label>
+                    <input type="text" id="cedula" name="cedula" required placeholder="Ingrese su número de cédula">
+                    <div class="error-message" id="error-cedula">Este campo es obligatorio</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Pasaporte <span class="optional">(opcional)</span></label>
+                    <input type="text" id="pasaporte" name="pasaporte" placeholder="Ingrese su número de pasaporte">
+                </div>
+
+                <div class="form-group">
+                    <label>Correo electrónico <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                    <div class="error-message" id="error-email">Ingrese un correo electrónico válido</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Número de celular con código de país <span class="required">*</span></label>
+                    <div class="phone-group">
+                        <select id="codigoPais" name="codigoPais" required>
+                            <option value="+57">+57 (CO)</option>
+                            <option value="+1">+1 (US/CA)</option>
+                            <option value="+34">+34 (ES)</option>
+                            <option value="+52">+52 (MX)</option>
+                            <option value="+54">+54 (AR)</option>
+                            <option value="+55">+55 (BR)</option>
+                            <option value="+56">+56 (CL)</option>
+                            <option value="+58">+58 (VE)</option>
+                            <option value="+51">+51 (PE)</option>
+                            <option value="+593">+593 (EC)</option>
+                            <option value="+507">+507 (PA)</option>
+                            <option value="+506">+506 (CR)</option>
+                        </select>
+                        <input type="tel" id="celular" name="celular" required placeholder="Número de celular">
+                    </div>
+                    <div class="error-message" id="error-celular">Este campo es obligatorio</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Aporte en dólares (USD) <span class="required">*</span></label>
+                    <input type="number" id="aporte" name="aporte" required min="0" step="0.01" placeholder="0.00">
+                    <div class="error-message" id="error-aporte">Ingrese un monto válido</div>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Cuántas participaciones de 100 dólares? <span class="required">*</span></label>
+                    <input type="number" id="participaciones" name="participaciones" required min="1" step="1" placeholder="0">
+                    <div class="error-message" id="error-participaciones">Ingrese un número válido (mínimo 1)</div>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Participación</button>
+            </form>
+        </div>
+
+        <div class="admin-panel">
+            <div class="admin-title">⚙️ Panel de Administración <span class="status-indicator"></span></div>
+            <button class="export-btn" onclick="exportToExcel()">📥 Descargar datos en Excel (.xlsx)</button>
+            <button class="export-btn" onclick="viewRecords()">👁️ Ver todos los registros</button>
+            <button class="export-btn" onclick="clearAllData()" style="background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);">🗑️ Limpiar todos los datos</button>
+            <div class="records-count" id="recordsCount">Total de registros: 0</div>
+        </div>
+
+        <div class="share-section">
+            <div class="share-title">🔗 Enlace para compartir este formulario</div>
+            <div class="share-link">
+                <input type="text" class="share-input" id="shareLink" readonly>
+                <button class="copy-btn" onclick="copyShareLink()">Copiar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2 class="modal-title">¡Registro Exitoso!</h2>
+            <p class="modal-message">Su participación ha sido registrada correctamente. Gracias por su confianza.</p>
+            <button class="modal-close" onclick="closeModal()">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        // ============================================
+        // SISTEMA DE ALMACENAMIENTO CON LOCALSTORAGE
+        // ============================================
+        
+        const STORAGE_KEY = 'participaciones_bth_data';
+
+        // Función para obtener datos del localStorage
+        function getData() {
+            try {
+                const data = localStorage.getItem(STORAGE_KEY);
+                return data ? JSON.parse(data) : [];
+            } catch (error) {
+                console.error('Error al leer datos:', error);
+                return [];
+            }
+        }
+
+        // Función para guardar datos en localStorage
+        function saveData(data) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                return true;
+            } catch (error) {
+                console.error('Error al guardar datos:', error);
+                alert('Error al guardar los datos. El almacenamiento local podría estar lleno.');
+                return false;
+            }
+        }
+
+        // Inicializar el enlace para compartir
+        document.getElementById('shareLink').value = window.location.href;
+
+        // Función para copiar el enlace
+        function copyShareLink() {
+            const shareInput = document.getElementById('shareLink');
+            shareInput.select();
+            shareInput.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copiado';
+                btn.style.background = '#48bb78';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#2c5282';
+                }, 2000);
+            } catch (err) {
+                alert('Por favor, copie el enlace manualmente');
+            }
+        }
+
+        // Actualizar contador de registros
+        function updateRecordCount() {
+            const data = getData();
+            document.getElementById('recordsCount').textContent = `Total de registros: ${data.length}`;
+        }
+
+        // Manejar el envío del formulario
+        document.getElementById('participacionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validar campos
+            let isValid = true;
+            const fields = ['nombre', 'cedula', 'email', 'celular', 'aporte', 'participaciones'];
+            
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                const error = document.getElementById(`error-${field}`);
+                
+                if (!input.value.trim() || (input.type === 'email' && !input.validity.valid)) {
+                    error.style.display = 'block';
+                    input.style.borderColor = '#e53e3e';
+                    isValid = false;
+                } else {
+                    error.style.display = 'none';
+                    input.style.borderColor = '#e2e8f0';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Por favor, complete todos los campos obligatorios correctamente.');
+                return;
+            }
+            
+            // Recopilar datos del formulario
+            const formData = {
+                id: Date.now(), // ID único basado en timestamp
+                fecha: new Date().toLocaleString('es-CO', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                }),
+                nombre: document.getElementById('nombre').value.trim(),
+                cedula: document.getElementById('cedula').value.trim(),
+                pasaporte: document.getElementById('pasaporte').value.trim() || 'N/A',
+                email: document.getElementById('email').value.trim(),
+                telefono: document.getElementById('codigoPais').value + ' ' + document.getElementById('celular').value.trim(),
+                aporte: parseFloat(document.getElementById('aporte').value),
+                participaciones: parseInt(document.getElementById('participaciones').value)
+            };
+            
+            // Obtener datos existentes
+            const existingData = getData();
+            
+            // Agregar nuevo registro
+            existingData.push(formData);
+            
+            // Guardar datos actualizados
+            const saved = saveData(existingData);
+            
+            if (saved) {
+                // Mostrar modal de éxito
+                document.getElementById('successModal').style.display = 'block';
+                
+                // Limpiar formulario
+                this.reset();
+                
+                // Actualizar contador
+                updateRecordCount();
+                
+                console.log('✅ Datos guardados correctamente:', formData);
+            } else {
+                alert('Error al guardar los datos. Por favor, intente nuevamente.');
+            }
+        });
+
+        // Cerrar modal
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('successModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Exportar a Excel
+        function exportToExcel() {
+            const data = getData();
+            
+            if (data.length === 0) {
+                alert('❌ No hay datos para exportar.\n\nPrimero debe registrar al menos una participación.');
+                return;
+            }
+            
+            // Preparar datos para Excel
+            const excelData = data.map((item, index) => ({
+                'No.': index + 1,
+                'Fecha de Registro': item.fecha,
+                'Nombre Completo': item.nombre,
+                'Número de Cédula': item.cedula,
+                'Pasaporte': item.pasaporte,
+                'Correo Electrónico': item.email,
+                'Teléfono': item.telefono,
+                'Aporte (USD)': item.aporte.toFixed(2),
+                'Participaciones': item.participaciones,
+                'Total Participación (USD)': (item.participaciones * 100).toFixed(2)
+            }));
+            
+            // Crear libro de Excel
+            const ws = XLSX.utils.json_to_sheet(excelData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Participaciones');
+            
+            // Ajustar ancho de columnas
+            const colWidths = [
+                { wch: 6 },  // No.
+                { wch: 20 }, // Fecha
+                { wch: 30 }, // Nombre
+                { wch: 18 }, // Cédula
+                { wch: 15 }, // Pasaporte
+                { wch: 30 }, // Email
+                { wch: 20 }, // Teléfono
+                { wch: 15 }, // Aporte
+                { wch: 15 }, // Participaciones
+                { wch: 18 }  // Total
+            ];
+            ws['!cols'] = colWidths;
+            
+            // Generar nombre de archivo con fecha y hora
+            const ahora = new Date();
+            const fechaArchivo = ahora.toISOString().split('T')[0]; // YYYY-MM-DD
+            const horaArchivo = ahora.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
+            const fileName = `Participaciones_BTH_${fechaArchivo}_${horaArchivo}.xlsx`;
+            
+            // Descargar archivo
+            XLSX.writeFile(wb, fileName);
+            
+            alert(`✅ Archivo Excel descargado exitosamente!\n\n📊 Total de registros: ${data.length}\n📁 Nombre: ${fileName}`);
+        }
+
+        // Ver registros
+        function viewRecords() {
+            const data = getData();
+            
+            if (data.length === 0) {
+                alert('❌ No hay registros para mostrar.\n\nPrimero debe registrar al menos una participación.');
+                return;
+            }
+            
+            let recordsHTML = '═══════════════════════════════════════\n';
+            recordsHTML += '   REGISTROS DE PARTICIPACIONES BTH\n';
+            recordsHTML += '═══════════════════════════════════════\n\n';
+            recordsHTML += `📊 Total de participaciones: ${data.length}\n`;
+            recordsHTML += `💰 Total recaudado: $${data.reduce((sum, item) => sum + item.aporte, 0).toFixed(2)} USD\n`;
+            recordsHTML += '═══════════════════════════════════════\n\n';
+            
+            data.forEach((item, index) => {
+                recordsHTML += `📋 REGISTRO #${index + 1}\n`;
+                recordsHTML += `───────────────────────────────────────\n`;
+                recordsHTML += `📅 Fecha: ${item.fecha}\n`;
+                recordsHTML += `👤 Nombre: ${item.nombre}\n`;
+                recordsHTML += `🆔 Cédula: ${item.cedula}\n`;
+                recordsHTML += `🛂 Pasaporte: ${item.pasaporte}\n`;
+                recordsHTML += `📧 Email: ${item.email}\n`;
+                recordsHTML += `📱 Teléfono: ${item.telefono}\n`;
+                recordsHTML += `💵 Aporte: $${item.aporte.toFixed(2)} USD\n`;
+                recordsHTML += `🎫 Participaciones: ${item.participaciones}\n`;
+                recordsHTML += `───────────────────────────────────────\n\n`;
+            });
+            
+            alert(recordsHTML);
+        }
+
+        // Limpiar todos los datos
+        function clearAllData() {
+            const data = getData();
+            
+            if (data.length === 0) {
+                alert('ℹ️ No hay datos para eliminar.');
+                return;
+            }
+            
+            const confirmacion = confirm(
+                `⚠️ ADVERTENCIA ⚠️\n\n` +
+                `Está a punto de eliminar TODOS los registros.\n\n` +
+                `📊 Total de registros: ${data.length}\n` +
+                `💰 Total recaudado: $${data.reduce((sum, item) => sum + item.aporte, 0).toFixed(2)} USD\n\n` +
+                `❗ Esta acción NO se puede deshacer.\n\n` +
+                `¿Está SEGURO de que desea continuar?`
+            );
+            
+            if (confirmacion) {
+                const confirmacionFinal = confirm(
+                    '⚠️ ÚLTIMA CONFIRMACIÓN ⚠️\n\n' +
+                    '¿Realmente desea ELIMINAR todos los datos?\n\n' +
+                    'Haga clic en ACEPTAR para eliminar o CANCELAR para mantener los datos.'
+                );
+                
+                if (confirmacionFinal) {
+                    try {
+                        localStorage.removeItem(STORAGE_KEY);
+                        updateRecordCount();
+                        alert('✅ Todos los datos han sido eliminados correctamente.');
+                    } catch (error) {
+                        alert('❌ Error al eliminar los datos. Por favor, intente nuevamente.');
+                    }
+                }
+            }
+        }
+
+        // Verificar si localStorage está disponible
+        function checkLocalStorage() {
+            try {
+                const test = '__localStorage_test__';
+                localStorage.setItem(test, test);
+                localStorage.removeItem(test);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        // Inicializar al cargar la página
+        window.addEventListener('load', function() {
+            // Verificar disponibilidad de localStorage
+            if (!checkLocalStorage()) {
+                alert(
+                    '⚠️ ADVERTENCIA ⚠️\n\n' +
+                    'El almacenamiento local no está disponible en su navegador.\n\n' +
+                    'Posibles causas:\n' +
+                    '• Modo incógnito/privado activado\n' +
+                    '• Cookies deshabilitadas\n' +
+                    '• Configuración de privacidad restrictiva\n\n' +
+                    'Por favor, ajuste la configuración de su navegador para usar este formulario.'
+                );
+            }
+            
+            // Actualizar contador
+            updateRecordCount();
+            
+            // Mensaje de bienvenida en consola
+            console.log(
+                '%c🌟 FORMULARIO BTH - Sistema activo 🌟',
+                'color: #DAA520; font-size: 16px; font-weight: bold;'
+            );
+            console.log(
+                '%c✅ LocalStorage disponible y funcionando',
+                'color: #48bb78; font-size: 14px;'
+            );
+            console.log(
+                `%c📊 Registros actuales: ${getData().length}`,
+                'color: #2c5282; font-size: 14px;'
+            );
+        });
+    </script>
+</body>
+</html>
